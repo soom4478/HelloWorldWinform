@@ -21,5 +21,10 @@ namespace HelloWorldWinform
         {
 
         }
+
+        private void btnPush_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "쾅!";
+        }
     }
 }
