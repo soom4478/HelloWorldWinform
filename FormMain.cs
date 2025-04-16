@@ -48,6 +48,7 @@ namespace HelloWorldWinform
             // 모달리스(Modeless) 창
             formAbout1.Text = "모달리스창";
             formAbout2.ShowDialog();
+
         }
     }
 }
