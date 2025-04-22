@@ -13,9 +13,11 @@ namespace HelloWorldWinform
 {
     public partial class FormMain: Form
     {
+        private static string OriginalText;
         public FormMain()
         {
             InitializeComponent();
+            OriginalText = textBox1.Text;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -78,7 +80,9 @@ namespace HelloWorldWinform
         private void 새로만들기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             lblFileName.Text = "제목없음";
+            OriginalText = textBox1.Text;
             textBox1.Text = "글자를 입력해 주세요";
+            lblTextChanged.Text = "";
         }
 
         private void 저장ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,6 +106,8 @@ namespace HelloWorldWinform
             using (StreamWriter sw = new StreamWriter(lblFileName.Text))
             {
                 sw.Write(textBox1.Text);
+                OriginalText = textBox1.Text;
+                lblTextChanged.Text = "";
                 sw.Close();
             }             
         }
@@ -125,8 +131,37 @@ namespace HelloWorldWinform
             using (StreamWriter sw = new StreamWriter(lblFileName.Text))
             {
                 sw.Write(textBox1.Text);
+                lblTextChanged.Text = "";
+                OriginalText = textBox1.Text;
                 sw.Close();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox1.Text != OriginalText)
+            {
+                lblTextChanged.Text = "🐸";
+            }
+            else
+            {
+                lblTextChanged.Text = "";
+            }
+        }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFileName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
